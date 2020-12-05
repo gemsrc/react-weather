@@ -4,10 +4,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p> 
-          
+        <div></div>
+        <p>
+          <a href="https://github.com/gemsrc/react-weather" target="blank">Open Source-Code </a> 
+            by Gemma Sorce
         </p>
-        
       </header>
     </div>
   );
