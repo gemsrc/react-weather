@@ -1,0 +1,23 @@
+.Weather{
+    border: 1px solid #e8e8e8;
+    border-radius: 15px;
+    font-family: 'Raleway', sans-serif;
+    padding: 15px;
+    
+}
+h1{
+    font-family: 'Poppins', sans-serif;
+    padding-top: 15px;
+}
+
+h2{
+    font-family: 'Poppins', sans-serif;
+}
+
+ul{
+    list-style: none;
+}
+#degree{
+    font-size: 40px;
+    font-weight: 900;
+}
