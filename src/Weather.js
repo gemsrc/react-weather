@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import Axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
-  return (
+    const [ready, setReady]=useState(false)
+    const [weatherData, setWeatherData] = useState({ ready: false });
+    function handleResponse(response){
+         setWeatherData({
+           ready: true,
+           temperature: response.data.main.temp,
+           description: response.data.weather[0].description,
+           wind: response.data.wind.speed,
+           date: new Date(response.data.dt * 1000),
+           humidity: response.data.main.humidity,
+           city: response.data.name,
+           icon: response.data.weather[0].icon,
+         });
+         setReady(true);
+    }
+
+    if (ready) {
+        return (
     <div className="Weather">
       <form>
         <div className="row">
@@ -24,7 +42,7 @@ export default function Weather() {
       </form>
 
       <div className="City">
-        <h1>Pontevedra</h1>
+        <h1>{weatherData.city}</h1>
       </div>
       <div>
         <p id="dateTime">Sunday 6th December || 22:30</p>
@@ -32,15 +50,15 @@ export default function Weather() {
       <div className="row">
         <div className="col-6">
           <ul>
-            <li>Light Rain</li>
+            <li>{weatherData.description}</li>
             <li>Precipitation: 70%</li>
-            <li>Humidity: 25%</li>
-            <li>Wind: 15 km/h</li>
+            <li>Humidity: {weatherData.humidity}%</li>
+            <li>Wind: {weatherData.wind} km/h</li>
           </ul>
         </div>
         <div className="col-6">
           <div>
-            <span className="degree">6° </span>
+            <span className="degree">{Math.round(weatherData.temperature)}°</span>
             <span className="unit">
               C|F
             </span>
@@ -54,4 +72,12 @@ export default function Weather() {
       </div>
     </div>
   );
+    } else {
+      const apiKey = "51b4052e87957ee96238e364a7c4709c";
+      let city = "Pontevedra";
+      let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+      Axios.get(apiUrl).then(handleResponse);
+
+      return "Loading..." 
+    }
 }
