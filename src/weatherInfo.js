@@ -3,8 +3,8 @@ import FormattedDate from "./formattedDate.js";
 import WeatherTemperature from "./WeatherTemperature.js";
 import WeatherIcon from "./WeatherIcons";
 
-export default function WeatherInfo(props) {
-  return (
+export default function WeatherInfo(props) { 
+    return (
       <div className="weatherInfo">
             <h1 className="City"> {props.data.city}</h1>
         <div>
@@ -19,6 +19,7 @@ export default function WeatherInfo(props) {
             <li>Wind: {props.data.wind} km/h</li>
           </ul>
         </div>
+        </div>
         <div className="col-6">
           <div>
             <span className="degree">{Math.round(props.data.temperature)}°</span>
@@ -30,5 +31,5 @@ export default function WeatherInfo(props) {
             </div>
         </div> 
     </div>
-  );}
-    
+  );
+  }
