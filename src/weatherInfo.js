@@ -1,13 +1,13 @@
 import React from "react";
-import FormattedDate from "./formattedDate.js";
+import FormattedDate from "./formattedDate";
 import WeatherIcon from "./WeatherIcons";
 import WeatherTemperature from"./WeatherTemperature";
+
+
 export default function WeatherInfo(props) { 
     return (
       <div className="weatherInfo">
-        <div>
           <h1 className="City"> {props.data.city}</h1>
-        </div>
         <div>
           <p id="dateTime">
             <FormattedDate date={props.data.date} />
@@ -17,7 +17,6 @@ export default function WeatherInfo(props) {
           <div className="col-6">
             <ul>
               <li className="text-capitalize">{props.data.description}</li>
-              <li>Precipitation: 70%</li>
               <li>Humidity: {props.data.humidity}%</li>
               <li>Wind: {props.data.wind} km/h</li>
             </ul>

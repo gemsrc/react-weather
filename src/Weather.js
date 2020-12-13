@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./Weather.css";
 import WeatherInfo from "./weatherInfo";
 import WeatherForecast from "./WeatherForecast";
+import axios from "axios";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
-    function handleResponse(response){
+    
+  function handleResponse(response){
          setWeatherData({
            ready: true,
            temperature: response.data.main.temp,
@@ -40,7 +41,7 @@ export default function Weather(props) {
               <div className="row">
                 <div className="col-9">
                   <input
-                    type="Search"
+                    type="search"
                     placeholder="Enter a city..."
                     className="form-control"
                     autoFocus="on"
