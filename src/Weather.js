@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Axios from "axios";
+import axios from "axios";
 import "./Weather.css";
-import FormattedDate from "./formattedDate";
-import weatherInfo from "./weatherInfo";
+import WeatherInfo from "./weatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
-export default function Weather() {
-    const [weatherData, setWeatherData] = useState({ ready: false });
+export default function Weather(props) {
+  const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
     function handleResponse(response){
          setWeatherData({
            ready: true,
@@ -18,22 +19,24 @@ export default function Weather() {
            icon: response.data.weather[0].icon,
          });   
     }
+     function handleSubmit(event) {
+       event.preventDefault();
+       search();
+     }
+
+     function handleCityChange(event) {
+       setCity(event.target.value);
+     }
     function search() {
     const apiKey = `51b4052e87957ee96238e364a7c4709c`;
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
-  function handleSubmit(event) {
-    event.preventDefault();
-    search();
-  }
-  function handleCityChange(event) {
-    setCity(event.target.value);
-  }
+ 
     if (weatherData.ready) {
         return (
           <div className="Weather">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="row">
                 <div className="col-9">
                   <input
