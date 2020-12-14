@@ -1,5 +1,5 @@
 .Weather{
-    background-color: #ecbc74e0;
+    background-color: #F3D9DC;
     box-shadow: 2px 3px 12px 1px rgba(0,0,0,0.78); 
     border: 1px solid transparent;
     border-radius: 15px;
@@ -31,7 +31,7 @@ ul{
 .unit {
     font-weight: 900;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 10px;
     color: black;
 }
 .unit a {
@@ -45,6 +45,7 @@ ul{
 #WeatherIcon canvas{
     margin-top: -19px;
     height: 70px;
+    margin-left: -15px;
 }
 .WeatherForecastPreview {
     text-align: center;
@@ -53,7 +54,7 @@ ul{
 }
 .temperature{
     margin-top: -50px;
-  margin-left: 70px;
+  margin-left: 50px;
 }
 
 .WeatherTemperature{
